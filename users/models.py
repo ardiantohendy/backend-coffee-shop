@@ -3,10 +3,9 @@ from django.contrib.auth.models import AbstractUser # digunakan agar tetap memil
 
 # Create your models here.
 
-class CustomUser(AbstractUser):
-    email = models.EmailField(unique=True) 
+class CustomUser(AbstractUser): 
     phone_number = models.CharField(max_length=15, blank=True, null=True)
-    photo_profile = models.ImageField(upload_to='profile_photos/', blank=True, null=True)
+    photo_profile = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
 
     def __str__(self):
         return self.username
