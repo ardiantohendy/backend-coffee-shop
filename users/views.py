@@ -35,7 +35,7 @@ def login_user(request):
     if user is None:
         return Response({'Error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
     
-    token, _ = Token.objects.get_or_create(user=user)
+    token,_ = Token.objects.get_or_create(user=user)
     return Response({"token": token.key, "user": UserSerializer(user).data})
 
 @api_view(['POST'])
@@ -43,6 +43,7 @@ def login_user(request):
 def logout_user(request):
     request.user.auth_token.delete()
     return Response({"message": "Logged out successfully"}, status=status.HTTP_200_OK)
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

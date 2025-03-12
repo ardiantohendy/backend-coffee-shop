@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'menu',
     'users',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -105,8 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser' 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Internationalization
