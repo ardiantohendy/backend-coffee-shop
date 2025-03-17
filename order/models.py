@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from menu.models import MenuItem
+from users.models import CustomUser
 
 # Create your models here.
 
-User = get_user_model()
+CustomUser = get_user_model()
 
 class Order(models.Model):
     STATUS_CHOICES = [
@@ -13,7 +14,7 @@ class Order(models.Model):
         ('cancelled', 'Cancelled')
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     items = models.ManyToManyField(MenuItem, through='OrderItem')
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
