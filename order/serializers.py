@@ -13,5 +13,12 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields =  ['items', 'total_price', 'status', 'user'] 
-        read_only_fields = ['user'] 
+        read_only_fields = ['user', 'total_price']
+
+    def create(self, validated_data):
+        items_data = validated_data.pop('items', [])
+        user = self.context['request'].user 
+
+        order = Order.objects.get(id=item_data['menu_item'])
+        
         
