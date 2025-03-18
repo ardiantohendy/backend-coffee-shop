@@ -11,6 +11,13 @@ class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
 
+    # def get_serializer_context(self):
+    #     context = super().get_serializer_context()
+    #     context['request'] = self.request
+    #     return context
+
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+
 
