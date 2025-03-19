@@ -9,7 +9,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
-    user = serializers.ReadOnlyField(source='user.username')
+    items = serializers.ListField(write_only=True)
 
     class Meta:
         model = Order
@@ -18,7 +18,9 @@ class OrderSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         items_data = validated_data.pop('items', [])
-        user = self.context['request'].user 
+        user = self.context['request'].user
+        
+        validated_data.pop('user', None) 
 
         order = Order.objects.create(user=user, **validated_data)
         total_price = 0
