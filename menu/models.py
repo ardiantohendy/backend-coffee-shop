@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class MenuItem(models.Model):
     CATEGORY_CHOICES = [
-        ('coffee', 'Coffe-Based Drinks'),
+        ('coffee', 'Coffee-Based Drinks'),
         ('non_coffee', 'Non-Coffee Drinks'),
         ('cold', 'Cold & Blended Drinks'),
         ('food', 'Food & Pastries'),
