@@ -14,5 +14,5 @@ class MenuItemViewSet(viewsets.ModelViewSet):
 @api_view(['GET'])
 def get_data(request):
     menu = MenuItem.objects.all()
-    serializer = MenuItemSerializer(menu, many=True)
+    serializer = MenuItemSerializer(menu, many=True, context={'request': request})
     return Response(serializer.data)
